@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.edwin.myfirstapp" >
+    package="com.example.edwin.MyFirstApp" >
 
     <application
         android:allowBackup="true"
@@ -17,5 +17,14 @@
             </intent-filter>
         </activity>
     </application>
+
+    <activity
+        android:name="com.example.MyFirstApp.DisplayMessageActivity"
+        android:label="@string/title_activity_display_message"
+        android:parentActivityName="com.example.MyFirstApp.MainActivity" >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.MyFirstApp.MainActivity" />
+    </activity>
 
 </manifest>
