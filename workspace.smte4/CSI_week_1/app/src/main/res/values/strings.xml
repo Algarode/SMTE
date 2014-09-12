@@ -13,8 +13,11 @@
     <string name="vname">Horatio</string>
     <string name="vage">48</string>
     <string name="vgender">Male</string>
-    <string name="vbounty">$5000</string>
+    <string name="vbounty">$50.000</string>
 
     <string name="img_desc">Image description</string>
+
+    <string name="details">Details</string>
+    <string name="suspectDetails">Deze man wordt gezocht.Deze man wordt gezocht.Deze man wordt gezocht.Deze man wordt gezocht.Deze man wordt gezocht.Deze man wordt gezocht.Deze man wordt gezocht.</string>
 
 </resources>
