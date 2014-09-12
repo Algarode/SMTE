@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:contentDescription="@string/img_desc"
-        android:src="@drawable/csi-miami" />
+        android:src="@drawable/csimiami" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -26,7 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TableRow>
+            <TableRow
+                android:background="@color/background">
 
                 <TextView
                     android:layout_width="wrap_content"
