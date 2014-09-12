@@ -46,7 +46,7 @@
                     android:layout_column="2"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/vname"
-                    android:id="@+id/textView" />
+                    android:id="@+id/tvNameDetails" />
 
             </TableRow>
 
@@ -70,7 +70,7 @@
                     android:layout_column="2"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/gender"
-                    android:id="@+id/textView2" />
+                    android:id="@+id/tvGenderDetails" />
 
             </TableRow>
 
@@ -94,7 +94,7 @@
                     android:layout_column="2"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/vage"
-                    android:id="@+id/textView3" />
+                    android:id="@+id/tvAgeDetails" />
             </TableRow>
 
             <TableRow
@@ -117,10 +117,49 @@
                     android:layout_column="2"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/vbounty"
-                    android:id="@+id/textView4" />
+                    android:id="@+id/tvBountyDetails" />
             </TableRow>
 
         </TableLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/details"
+                android:id="@+id/tvDetails" />
+
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:id="@+id/scrollView" >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/suspectDetails"
+                        android:id="@+id/tvSuspectDetails" />
+                </LinearLayout>
+            </ScrollView>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Report"
+                android:id="@+id/button"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
