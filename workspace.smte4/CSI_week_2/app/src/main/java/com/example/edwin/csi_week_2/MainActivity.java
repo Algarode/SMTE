@@ -11,12 +11,15 @@ import android.widget.Button;
 
 public class MainActivity extends ActionBarActivity {
 
+    public static String name = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button bReport = (Button) findViewById(R.id.btnReport);
         bReport.setOnClickListener(myhandler1);
+        getName();
     }
 
     View.OnClickListener myhandler1 = new View.OnClickListener() {
@@ -45,4 +48,10 @@ public class MainActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void getName() {
+        Intent intent = new Intent(MainActivity.this, CriminalsListActivity.class);
+        name = intent.getStringExtra("Name");
+    }
+
 }
