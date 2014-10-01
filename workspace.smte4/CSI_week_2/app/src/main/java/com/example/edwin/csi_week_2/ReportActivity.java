@@ -8,6 +8,7 @@ import android.widget.Button;
  * Created by Edwin on 18-9-2014.
  */
 public class ReportActivity extends MainActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,4 +23,5 @@ public class ReportActivity extends MainActivity {
             finish();
         }
     };
+
 }
