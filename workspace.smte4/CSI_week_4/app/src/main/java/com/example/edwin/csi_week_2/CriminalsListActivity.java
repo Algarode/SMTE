@@ -23,15 +23,17 @@ public class CriminalsListActivity extends MainActivity {
 
         ListView lv = (ListView) findViewById(R.layout.lvCriminals);
         lv.setAdapter(criminalListAdapter);
+
         final String[] criminals = getResources().getStringArray(R.array.names);
         lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, criminals));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String name = criminals[position];
+                int position = criminals[position];
 
                 Intent intent = new Intent(CriminalsListActivity.this, MainActivity.class);
                 intent.putExtra("Name", name);
+                intent.putExtra("chosenCriminalPosition", position);
                 startActivity(intent);
             }
         });

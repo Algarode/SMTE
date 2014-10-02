@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class MainActivity extends ActionBarActivity {
 
-    public static String name = "";
+    public static int chosenCriminalPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,8 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         Button bReport = (Button) findViewById(R.id.btnReport);
         bReport.setOnClickListener(myhandler1);
-        getName();
+
+        getPosition();
     }
 
     View.OnClickListener myhandler1 = new View.OnClickListener() {
@@ -49,9 +50,10 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void getName() {
+    public void getPosition() {
+        CriminalProvider criminalProvider = new CriminalProvider(this);
         Intent intent = new Intent(MainActivity.this, CriminalsListActivity.class);
-        name = intent.getStringExtra("Name");
+        chosenCriminalPosition = intent.getIntExtra("chosenCriminalPosition", 1);
     }
 
 }
