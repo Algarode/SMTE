@@ -86,7 +86,7 @@ public class CriminalProvider{
 			someCriminal.name = criminalNames[criminalIndex];
 			someCriminal.description = criminalDetails[criminalIndex];
 			
-			int drawableId = drawableIds[criminalIndex];
+			int drawableId = drawableIds[criminalIndex  % drawableIds.length];
 			someCriminal.mugshot = context.getResources().getDrawable(drawableId);
 			
 			Random r = new Random();
