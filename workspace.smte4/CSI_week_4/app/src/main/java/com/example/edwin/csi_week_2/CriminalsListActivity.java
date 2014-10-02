@@ -18,7 +18,11 @@ public class CriminalsListActivity extends MainActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.criminalslist);
 
+        CriminalProvider criminalProvider = new CriminalProvider(this);
+        CriminalListAdapter criminalListAdapter = new CriminalListAdapter(this, criminalProvider.GetCriminals());
+
         ListView lv = (ListView) findViewById(R.layout.lvCriminals);
+        lv.setAdapter(criminalListAdapter);
         final String[] criminals = getResources().getStringArray(R.array.names);
         lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, criminals));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
