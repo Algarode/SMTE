@@ -1,4 +1,4 @@
-package com.example.csi;
+package com.example.edwin.csi_week_2.;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,7 +23,7 @@ public class CriminalProvider{
 	 * This list contains the generated criminals.
 	 * Notice the static. This means that all CriminalProvider classes share the same list.
 	 */
-	private static List<Criminal> criminalList;
+	private static List<com.example.edwin.csi_week_2.Criminal> criminalList;
 	/**
 	 * This context can be used to acquire the resources.
 	 */
@@ -39,7 +39,7 @@ public class CriminalProvider{
 
 		if(criminalList == null)
 		{
-			criminalList = new ArrayList<Criminal>();
+			criminalList = new ArrayList<com.example.edwin.Criminal>();
 			fillCriminalList();
 		}
 	}
