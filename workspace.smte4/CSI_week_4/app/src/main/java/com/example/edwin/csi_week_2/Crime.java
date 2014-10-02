@@ -1,4 +1,4 @@
-package com.example.csi;
+package com.example.edwin.csi_week_2;
 
 public class Crime {
 
