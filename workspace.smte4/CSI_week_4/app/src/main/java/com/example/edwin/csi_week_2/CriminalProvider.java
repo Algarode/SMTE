@@ -1,4 +1,4 @@
-package com.example.edwin.csi_week_2.;
+package com.example.edwin.csi_week_2;
 
 import java.util.ArrayList;
 import java.util.Collections;
