@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SmsOpdracht</string>
+    <string name="action_settings">Settings</string>
+    <string name="verstuur">Stuur</string>
+    <string name="telefoonnummer">Telefoonnummer: </string>
+    <string name="bericht">Bericht: </string>
+
+</resources>
