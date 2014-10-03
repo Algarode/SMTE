@@ -16,12 +16,12 @@ public class CriminalsListActivity extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.criminalslist);
+        setContentView(R.id.criminalslist);
 
         CriminalProvider criminalProvider = new CriminalProvider(this);
         CriminalListAdapter criminalListAdapter = new CriminalListAdapter(this, criminalProvider.GetCriminals());
 
-        ListView lv = (ListView) findViewById(R.layout.lvCriminals);
+        ListView lv = (ListView) findViewById(R.id.lvCriminals);
         lv.setAdapter(criminalListAdapter);
 
         final String[] criminals = getResources().getStringArray(R.array.names);
