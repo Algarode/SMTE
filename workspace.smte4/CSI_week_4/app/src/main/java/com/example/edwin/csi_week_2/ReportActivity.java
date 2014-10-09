@@ -15,7 +15,9 @@ import android.widget.Switch;
  */
 public abstract class ReportActivity extends MainActivity implements LocationListener {
 
-    Double lat, lon;
+    private Double lat, lon;
+    private LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+    private LocationListener locationListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +32,13 @@ public abstract class ReportActivity extends MainActivity implements LocationLis
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    LocationListener locationListener = new LocationListener() {
+                    locationListener = new LocationListener() {
                         @Override
                         public void onLocationChanged(Location location) {
                             lat = location.getLatitude();
                             lon = location.getLongitude();
 
                             Log.i("Message ", "Locatie: " + lat + ", " + lon);
-
-
                         }
 
                         @Override
@@ -57,7 +57,6 @@ public abstract class ReportActivity extends MainActivity implements LocationLis
                         }
                     };
 
-                    LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                     locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, locationListener);
                     String locationProvider = LocationManager.NETWORK_PROVIDER;
                     Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
@@ -69,7 +68,11 @@ public abstract class ReportActivity extends MainActivity implements LocationLis
                     Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     vibrator.vibrate(pattern, 1);
 
-                } else { return; }
+                } else {
+
+                    locationManager.removeUpdates(locationListener);
+
+                }
             }
         });
     }
