@@ -77,6 +77,11 @@ public abstract class ReportActivity extends MainActivity implements LocationLis
         });
     }
 
+    @Override
+    protected void onPause() {
+        locationManager.removeUpdates(locationListener);
+    }
+
     View.OnClickListener myhandler1 = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
