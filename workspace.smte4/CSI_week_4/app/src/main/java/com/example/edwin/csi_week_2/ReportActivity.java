@@ -26,6 +26,7 @@ public abstract class ReportActivity extends MainActivity implements LocationLis
         setContentView(R.layout.report_activity);
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         Button btnBack = (Button) findViewById(R.id.btnBack);
         btnBack.setOnClickListener(myhandler1);
@@ -66,9 +67,8 @@ public abstract class ReportActivity extends MainActivity implements LocationLis
 
                     float[] results = new float[5];
                     Location.distanceBetween(lat, lon, lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude(), results);
-                    long[] pattern = new long[] { 20, 50, 100, 200, 40, 100 };
 
-                    vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    long[] pattern = new long[] { 20, 50, 100, 200, 40, 100 };
                     vibrator.vibrate(pattern, 1);
 
                 } else {
