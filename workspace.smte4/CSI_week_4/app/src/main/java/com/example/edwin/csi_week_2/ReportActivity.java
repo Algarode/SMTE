@@ -16,13 +16,16 @@ import android.widget.Switch;
 public abstract class ReportActivity extends MainActivity implements LocationListener {
 
     private Double lat, lon;
-    private LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+    private LocationManager locationManager;
     private LocationListener locationListener;
+    private Vibrator vibrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.report_activity);
+
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         Button btnBack = (Button) findViewById(R.id.btnBack);
         btnBack.setOnClickListener(myhandler1);
@@ -65,12 +68,13 @@ public abstract class ReportActivity extends MainActivity implements LocationLis
                     Location.distanceBetween(lat, lon, lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude(), results);
                     long[] pattern = new long[] { 20, 50, 100, 200, 40, 100 };
 
-                    Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     vibrator.vibrate(pattern, 1);
 
                 } else {
 
                     locationManager.removeUpdates(locationListener);
+                    vibrator.cancel();
 
                 }
             }
