@@ -1,0 +1,30 @@
+C:\Users\Edwin\Documents\Visual Studio 2012\Projects\Koffiescanner\Koffiescanner\bin\Debug\Koffiescanner.exe.config
+C:\Users\Edwin\Documents\Visual Studio 2012\Projects\Koffiescanner\Koffiescanner\bin\Debug\Koffiescanner.exe
+C:\Users\Edwin\Documents\Visual Studio 2012\Projects\Koffiescanner\Koffiescanner\bin\Debug\Koffiescanner.pdb
+C:\Users\Edwin\Documents\Visual Studio 2012\Projects\Koffiescanner\Koffiescanner\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Edwin\Documents\Visual Studio 2012\Projects\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.csprojResolveAssemblyReference.cache
+C:\Users\Edwin\Documents\Visual Studio 2012\Projects\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.Koffiescanner.resources
+C:\Users\Edwin\Documents\Visual Studio 2012\Projects\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.Properties.Resources.resources
+C:\Users\Edwin\Documents\Visual Studio 2012\Projects\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.csproj.GenerateResource.Cache
+C:\Users\Edwin\Documents\Visual Studio 2012\Projects\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.exe
+C:\Users\Edwin\Documents\Visual Studio 2012\Projects\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.pdb
+C:\Users\Edwin\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\bin\Debug\Koffiescanner.exe.config
+C:\Users\Edwin\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.exe
+C:\Users\Edwin\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.pdb
+C:\Users\Edwin\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\bin\Debug\Koffiescanner.exe
+C:\Users\Edwin\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\bin\Debug\Koffiescanner.pdb
+C:\Users\Edwin\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Edwin\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.csprojResolveAssemblyReference.cache
+C:\Users\Edwin\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.Koffiescanner.resources
+C:\Users\Edwin\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.Properties.Resources.resources
+C:\Users\Edwin\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.csproj.GenerateResource.Cache
+D:\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\bin\Debug\Koffiescanner.exe.config
+D:\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\bin\Debug\Koffiescanner.exe
+D:\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\bin\Debug\Koffiescanner.pdb
+D:\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\bin\Debug\HtmlAgilityPack.dll
+D:\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.Koffiescanner.resources
+D:\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.Properties.Resources.resources
+D:\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.csproj.GenerateResource.Cache
+D:\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.exe
+D:\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.pdb
+D:\Dropbox\School\_Fontys\Jaar 2\P7\SMED\Koffiescanner\Koffiescanner\obj\Debug\Koffiescanner.csprojResolveAssemblyReference.cache
