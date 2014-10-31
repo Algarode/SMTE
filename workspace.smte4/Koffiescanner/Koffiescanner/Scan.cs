@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Threading;
 
 namespace Koffiescanner
 {
@@ -31,6 +35,8 @@ namespace Koffiescanner
                 place = place.Replace(HTML_SPACE_PATTERN, "-");
 
                 places.Add(new Place(place));
+
+                Database.insert("INSERT INTO smed_locaties(naam) VALUES('" + place + "')");
             }
 
             return places;
@@ -63,15 +69,15 @@ namespace Koffiescanner
                     rank = Convert.ToInt32(node.SelectSingleNode("//li[@class='rank-" + i + "']//section[@class='ranking']//h1").InnerText);
                 }
 
-                var naam = node.SelectSingleNode("//li[@class='rank-" + i + "']//section[@class='spotdetails']//h2").InnerText.Replace("&amp;", "&").Replace("&#039;", "'").Replace("&eacute;", "é");
+                var naam = node.SelectSingleNode("//li[@class='rank-" + i + "']//section[@class='spotdetails']//h2").InnerText.Replace("&amp;", "&").Replace("&#039;", "\\'").Replace("&eacute;", "é");
 
-                var adresTelefoon = node.SelectSingleNode("//li[@class='rank-" + i + "']//section[@class='spotdetails']//address").InnerText.Split('|');
+                var adresTelefoon = node.SelectSingleNode("//li[@class='rank-" + i + "']//section[@class='spotdetails']//address").InnerText.Replace("&#039;", "\\'").Replace("'", "\\'").Split('|');
                 var telefoon = "";
 
                 var adresStad = adresTelefoon[0].Split(',');
 
                 var adres = adresStad[0].Replace("\n", String.Empty).Replace("\t", "");
-                var stad = adresStad[1].Replace(" ", "");
+                var stad = adresStad[1].Replace("/t", "");
 
                 if (adresTelefoon.Length < 2)
                 {
@@ -79,7 +85,7 @@ namespace Koffiescanner
                 }
                 else
                 {
-                    telefoon = adresTelefoon[1].Replace("telefoon:", String.Empty).Replace("\t", String.Empty);
+                    telefoon = adresTelefoon[1].Replace("telefoon:", String.Empty).Replace("\t", String.Empty).Replace("-", "").Replace(" ", "");
                 }
                 
                 var score = "";
@@ -95,13 +101,33 @@ namespace Koffiescanner
                     score = node.SelectSingleNode("//li[@class='rank-" + i + "']//div[@class='spotaverage']//p[@class='averagenumber']//span[@class='getal']").InnerText.Replace(",", ".");
                 }
 
+                WebClient webClient = new WebClient();
+                var data = webClient.DownloadString("https://maps.googleapis.com/maps/api/geocode/json?address=" + adres + ", " + stad);
+                JObject o = JObject.Parse(data);
+
+                var lat = "";
+                var lon = "";
+
+                if (data.Contains("ZERO_RESULTS"))
+                {
+                    lat = "";
+                    lon = "";
+                }
+                else
+                {
+                    lat = o["results"][0]["geometry"]["location"]["lat"].ToString();
+                    lon = o["results"][0]["geometry"]["location"]["lng"].ToString();
+                }
+
                 Coffeelocation coffeeLocation = new Coffeelocation(naam, rank, adres, stad, telefoon, score);
 
                 coffeelocations.Add(coffeeLocation);
 
-                Database.insert("INSERT INTO koffielocaties(rank, naam, adres, stad, telefoon, score) VALUES(" + rank + ", " + naam + ", " + adres + ", " + stad + ", " + telefoon + ", " + score + ")");
+                Database.insert("INSERT INTO smed_koffielocaties(rank, naam, adres, stad, telefoon, score, lat, lon) VALUES('" + rank + "', '" + naam + "', '" + adres + "', '" + stad + "', '" + telefoon + "', '" + score + "', '" + lat + "', '" + lon + "')");
 
                 i++;
+
+                Thread.Sleep(210);
             }
 
             return coffeelocations;
