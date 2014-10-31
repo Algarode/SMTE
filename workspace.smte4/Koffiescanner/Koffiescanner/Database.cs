@@ -12,17 +12,17 @@ namespace Koffiescanner
         private MySqlConnection connection;
         private string server;
         private string database;
-        private string uid;
+        private string user;
         private string password;
 
         public Database()
         {
-            server = "";
-            database = "";
-            uid = "";
-            password = "";
+            server = "31.186.175.188";
+            database = "devimo_pts";
+            user = "devimo_pts";
+            password = "Ob88hLHd";
             string connectionString;
-            connectionString = server + ";" + database + ";" + uid + ";" + password + ";";
+            connectionString = "Server=" + server + "; Port=3306; " + "Database=" + database + "; " + "Uid=" + user + "; " + "Pwd=" + password + ";";
 
             connection = new MySqlConnection(connectionString);
         }
@@ -59,10 +59,7 @@ namespace Koffiescanner
         {
             Database db = new Database();
 
-            if (!db.openConnection())
-            {
-                db.openConnection();
-            }
+            db.openConnection();
 
             MySqlCommand command = new MySqlCommand(sql, db.connection);
 
