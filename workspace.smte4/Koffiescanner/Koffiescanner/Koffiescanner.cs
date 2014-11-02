@@ -35,9 +35,15 @@ namespace Koffiescanner
             this.getCoffeeLocations();
         }
 
-        private void top5OphalenToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void top5OphalenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("no.");
+            foreach (var place in scan.coffeelocations)
+            {
+                string url = "http://debestekoffievan.nl/" + place.City + "/" + place.Name;
+                RequestPage request = new RequestPage();
+                string response = await request.GetHTML(url);
+                scan.fetchComments(response);
+            }
         }
 
         private async void getPlaces()
