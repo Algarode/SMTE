@@ -44,10 +44,10 @@
             this.Rank = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Naam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Adres = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Stad = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Telefoonnr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Cijfer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lstbxFeedback = new System.Windows.Forms.ListBox();
-            this.Stad = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPlaces.SuspendLayout();
@@ -91,8 +91,8 @@
             // top5OphalenToolStripMenuItem
             // 
             this.top5OphalenToolStripMenuItem.Name = "top5OphalenToolStripMenuItem";
-            this.top5OphalenToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.top5OphalenToolStripMenuItem.Text = "Top 5 ophalen";
+            this.top5OphalenToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.top5OphalenToolStripMenuItem.Text = "Reacties ophalen";
             this.top5OphalenToolStripMenuItem.Click += new System.EventHandler(this.top5OphalenToolStripMenuItem_Click);
             // 
             // btFetchPlaces
@@ -193,6 +193,11 @@
             this.Adres.Text = "Adres";
             this.Adres.Width = 180;
             // 
+            // Stad
+            // 
+            this.Stad.Text = "Stad";
+            this.Stad.Width = 100;
+            // 
             // Telefoonnr
             // 
             this.Telefoonnr.Text = "Telefoonnr";
@@ -210,11 +215,6 @@
             this.lstbxFeedback.Name = "lstbxFeedback";
             this.lstbxFeedback.Size = new System.Drawing.Size(193, 394);
             this.lstbxFeedback.TabIndex = 4;
-            // 
-            // Stad
-            // 
-            this.Stad.Text = "Stad";
-            this.Stad.Width = 100;
             // 
             // Koffiescanner
             // 
