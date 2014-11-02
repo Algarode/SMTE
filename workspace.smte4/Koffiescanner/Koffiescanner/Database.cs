@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace Koffiescanner
 {
@@ -66,6 +67,22 @@ namespace Koffiescanner
             command.ExecuteNonQuery();
 
             db.closeConnection();
+
+            command.Dispose();
+        }
+
+        public static DataTable select(string sql)
+        {
+            Database db = new Database();
+
+            db.openConnection();
+
+            MySqlCommand command = new MySqlCommand(sql, db.connection);
+            MySqlDataReader reader = command.ExecuteReader();
+            DataTable dataTable = new DataTable();
+            dataTable.Load(reader);
+
+            return dataTable;
         }
     }
 }
