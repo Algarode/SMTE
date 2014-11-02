@@ -7,6 +7,8 @@ using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Threading;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace Koffiescanner
 {
@@ -14,9 +16,16 @@ namespace Koffiescanner
     {
         public List<Place> places = new List<Place>();
         public List<Coffeelocation> coffeelocations = new List<Coffeelocation>();
+        public List<Reactie> reacties = new List<Reactie>();
 
         const string HTML_SPACE_PATTERN = "&nbsp;";
         const string HTML_TAG_PATTERN = "<.*?>";
+
+        private string prijs = "";
+        private string kwaliteit = "";
+        private string afstand = "";
+        private string smaken = "";
+        private string bediening = "";
 
         public List<Place> fetchPlaces(string html)
         {
@@ -125,12 +134,75 @@ namespace Koffiescanner
 
                 Database.insert("INSERT INTO smed_koffielocaties(rank, naam, adres, stad, telefoon, score, lat, lon) VALUES('" + rank + "', '" + naam + "', '" + adres + "', '" + stad + "', '" + telefoon + "', '" + score + "', '" + lat + "', '" + lon + "')");
 
+                this.fillSmedExtra(naam, score);
+
                 i++;
 
                 Thread.Sleep(210);
             }
 
             return coffeelocations;
+        }
+
+        public List<Reactie> fetchComments(string html)
+        {
+            HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(html);
+
+            //HtmlAgilityPack.HtmlNodeCollection nodecollection = doc.DocumentNode.SelectNodes("//div[@id='reviews']");
+            ////div[@class='row']//div[@class='review-text-section']
+            foreach (HtmlAgilityPack.HtmlNode node in doc.DocumentNode.SelectNodes("//div[@id='reviews']//div[@class='review hreview ']"))
+            {
+                var naam = node.SelectSingleNode("//div[@class='row']//div[@class='review-text-section']//div[@class='reviewer vcard']//a").InnerText;
+                var commentaar = node.SelectSingleNode("//div//blockquote//p[@class='description']").InnerText;
+
+                Reactie reactie = new Reactie(naam, commentaar);
+
+                reacties.Add(reactie);
+
+                Database.insert("INSERT INTO smed_reacties(naam, commentaar) VALUES('" + naam + "', '" + commentaar + "')");
+            }
+
+            return reacties;
+        }
+
+        private void fillSmedExtra(string naam, string score)
+        {
+            this.generateRandomScores(score);
+
+            Database.insert("INSERT INTO smed_extra(prijs, kwaliteit, afstand, smaken, bediening) VALUES('" + prijs + "', '" + kwaliteit + "', '" + afstand + "', '" + smaken + "', '" + bediening + "')");
+        }
+
+        private void generateRandomScores(string score)
+        {
+            Random random = new Random();
+
+            int scoreOutput = Convert.ToInt32(score.Replace(".", ""));
+
+            if (scoreOutput == 00)
+            {
+                prijs = "00";
+                kwaliteit = "00";
+                afstand = "00";
+                smaken = "00";
+                bediening = "00";
+            }
+            else if (scoreOutput == 10)
+            {
+                prijs = "100";
+                kwaliteit = "100";
+                afstand = "100";
+                smaken = "100";
+                bediening = "100";
+            }
+            else
+            {
+                prijs = random.Next((scoreOutput - 2), (scoreOutput + 2)).ToString();
+                kwaliteit = random.Next((scoreOutput - 2), (scoreOutput + 2)).ToString();
+                afstand = random.Next((scoreOutput - 2), (scoreOutput + 2)).ToString();
+                smaken = random.Next((scoreOutput - 2), (scoreOutput + 2)).ToString();
+                bediening = random.Next((scoreOutput - 2), (scoreOutput + 2)).ToString();
+            }
         }
     }
 }
