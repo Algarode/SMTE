@@ -85,7 +85,7 @@ namespace Koffiescanner
 
                 var adresStad = adresTelefoon[0].Split(',');
 
-                var adres = adresStad[0].Replace("\n", String.Empty).Replace("\t", "");
+                var adres = adresStad[0].Replace("\n", String.Empty).Replace("\t", String.Empty);
                 var stad = adresStad[1].Replace("/t", "");
 
                 if (adresTelefoon.Length < 2)
@@ -144,23 +144,52 @@ namespace Koffiescanner
             return coffeelocations;
         }
 
-        public List<Reactie> fetchComments(string html)
+        public List<Reactie> fetchComments(string html, string name)
         {
+            reacties.Clear();
+
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-            doc.LoadHtml(html);
-
-            //HtmlAgilityPack.HtmlNodeCollection nodecollection = doc.DocumentNode.SelectNodes("//div[@id='reviews']");
-            ////div[@class='row']//div[@class='review-text-section']
-            foreach (HtmlAgilityPack.HtmlNode node in doc.DocumentNode.SelectNodes("//div[@id='reviews']//div[@class='review hreview ']"))
+            if (html != null)
             {
-                var naam = node.SelectSingleNode("//div[@class='row']//div[@class='review-text-section']//div[@class='reviewer vcard']//a").InnerText;
-                var commentaar = node.SelectSingleNode("//div//blockquote//p[@class='description']").InnerText;
+                doc.LoadHtml(html);
 
-                Reactie reactie = new Reactie(naam, commentaar);
+                if (html.Contains("review hreview"))
+                {
+                    HtmlAgilityPack.HtmlNodeCollection nodecollection = doc.DocumentNode.SelectNodes("//div[@id='reviews']//div[@class='review hreview ']");
+                    foreach (HtmlAgilityPack.HtmlNode node in nodecollection)
+                    {
+                        if (node.SelectSingleNode("//div[@id='" + node.Id + "']//div//blockquote//p[@class='description']").InnerText.Trim() != "")
+                        {
+                            var naam = node.SelectSingleNode("//div[@id='" + node.Id + "']//div[@class='row']//div[@class='review-text-section']//div[@class='reviewer vcard']//a").InnerText;
+                            var commentaar = node.SelectSingleNode("//div[@id='" + node.Id + "']//div//blockquote//p[@class='description']").InnerText;
 
-                reacties.Add(reactie);
+                            naam = naam.Replace("'", "\\'");
+                            commentaar = commentaar.Replace("\t", String.Empty).Replace("&iuml;", "ï").Replace("'", "\\'").Replace("&amp;", "&").Replace("&#039;", "\\'").Replace("&eacute;", "é").Replace("&oacute;", "ó");
 
-                Database.insert("INSERT INTO smed_reacties(naam, commentaar) VALUES('" + naam + "', '" + commentaar + "')");
+                            Reactie reactie = new Reactie(naam, commentaar);
+
+                            reacties.Add(reactie);
+
+                            int locatieid = 0;
+
+                            DataTable dt = Database.select("SELECT id FROM smed_koffielocaties WHERE naam='" + name + "'");
+                            if (dt.Rows.Count > 0)
+                            {
+                                locatieid = Convert.ToInt32(dt.Rows[0][0]);
+                            }
+
+                            Database.insert("INSERT INTO smed_reacties(locatieid, naam, commentaar) VALUES('" + locatieid + "', '" + naam + "', '" + commentaar + "')");
+                        }
+                    }
+                }
+                else
+                {
+                    return reacties;
+                }
+            }
+            else
+            {
+                return reacties;
             }
 
             return reacties;
@@ -177,7 +206,7 @@ namespace Koffiescanner
         {
             Random random = new Random();
 
-            int scoreOutput = Convert.ToInt32(score.Replace(".", ""));
+            int scoreOutput = Convert.ToInt32(score.Replace(".", String.Empty));
 
             if (scoreOutput == 00)
             {
